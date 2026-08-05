@@ -42,6 +42,7 @@ The proposal provides a compelling look into current document-processing workflo
 
 **Company / Org:** Other  
 **Challenge Advisor:** Grace Lang, graceelang@gmail.com  
+**AI Studio Coach:** Hrushikesh Shetty, hrushikesh.shetty@breakthroughtech.org  
 **Program:** Break Through Tech AI Studio - Fall 2026  
 
 ---
