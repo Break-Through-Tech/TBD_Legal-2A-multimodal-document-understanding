@@ -57,7 +57,7 @@ This project focuses on modernizing document-processing workflows for organizati
 The team will design and implement a multimodal pipeline using ColPali and ColQwen2 to categorize business documents and extract key information into structured JSON formats. This project utilizes a public benchmark dataset to compare embedding architectures and evaluate their effectiveness in clustering and classification, directly addressing the bottleneck of manual document handling.
 
 ### Success Criteria
-Embedding comparison: clear head-to-head of ColPali vs. ColQwen2. Clustering: silhouette, Davies-Bouldin, ARI/NMI metrics. Classification: accuracy, macro-F1, confusion-matrix. Extraction: field-level accuracy/F1 and JSON validity.
+Embedding comparison: clear head-to-head of ColPali vs. ColQwen2. Clustering: silhouette, Davies-Bouldin, ARI/NMI metrics. Classification: accuracy, macro-F1, confusion matrix. Extraction: field-level accuracy/F1 and JSON validity.
 
 ### Project Milestones
 Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
