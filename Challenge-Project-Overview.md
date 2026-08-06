@@ -61,13 +61,17 @@ Embedding comparison: clear head-to-head of ColPali vs. ColQwen2. Clustering: si
 
 ### Project Milestones
 Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
-| Month | Milestone | Key Activities |
-|-------|-----------|----------------|
-| **September** | Data Exploration & Preprocessing | Load dataset from Hugging Face, perform exploratory data analysis on document image/text distributions, and implement image-to-tensor pre-processing pipelines. |
-| **October** | Feature Engineering & Baseline Modeling | Deploy ColPali and ColQwen2 baseline models to extract feature embeddings and build initial clustering/classification models using k-NN and random forests. |
-| **November** | Model Optimization & Evaluation | Apply dimensionality reduction (PCA/UMAP/t-SNE) for cluster visualization and conduct iterative hyperparameter tuning to optimize classification accuracy and JSON extraction validity. |
-| **December** | Insights, Deliverables & Presentation | Finalize performance benchmarks between models, document findings on compute trade-offs, and package the codebase for reproducible end-to-end inference. |
 
+| Month | Milestone | Key Activities |
+| :--- | :--- | :--- |
+| September | Data Setup, Preprocessing & Text Baseline | • Ingest and inspect the multimodal document dataset (images, OCR text, document layout annotations).<br>• Clean text OCR outputs and standardize document image dimensions.<br>• Implement baseline text-only embeddings (TF-IDF / Sentence-Transformers) for document classification.<br>• Establish evaluation metrics (Accuracy, Macro F1-score, Extraction Precision/Recall). |
+| October | Multimodal Embedding Extraction & Comparison | • Extract visual and layout-aware embeddings using pre-trained vision-language models (e.g., CLIP, LayoutLM, ColPali, or SigLIP).<br>• Train classification heads and entity extraction pipelines on candidate embedding representations.<br>• Conduct comparative benchmarking between text-only, visual, and joint multimodal embeddings across document types. |
+| November / December | Model Evaluation, Interactive UI & Deliverables | • Perform error analysis on challenging document categories (e.g., multi-column layouts, noisy scans, tabular structures).<br>• Build an interactive Streamlit application to upload document images, visualize embedding features, and compare extraction outputs.<br>• Package a clean, reproducible GitHub repository, project documentation, and final presentation deck. |
+
+### Stretch Goals
+* **Domain-Specific Fine-Tuning:** Fine-tune a lightweight multimodal encoder on specialized document classes (e.g., financial receipts, medical intake forms) to improve key-value extraction precision.
+* **Interactive Bounding Box Visualizer:** Build an overlay feature in the UI that displays extracted entity fields and bounding boxes directly over the original document images.
+* **Zero-Shot Layout Generalization:** Benchmark zero-shot transfer performance of multimodal embeddings on completely unseen document formats or non-English document layouts.
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
 ---
