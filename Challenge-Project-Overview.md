@@ -84,7 +84,7 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 ---
 
 ## 📊 Dataset
-**Name and Source:** OCR-Benchmark Dataset
+**Name and Source:** OCR-Benchmark Dataset   
 **Format:** JSON, Images, Text  
 **Size:** 1gb to 5gb  
 **Location:** https://huggingface.co/datasets/getomni-ai/ocr-benchmark 
