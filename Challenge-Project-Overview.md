@@ -48,84 +48,117 @@ The proposal provides a compelling look into current document-processing workflo
 ---
 
 ## 🏢 About Other
-This project focuses on modernizing document-processing workflows for organizations that handle high volumes of unstructured physical or digital files. By leveraging advanced multimodal AI, the team aims to replace manual data entry tasks with automated classification and structured extraction pipelines.
+[TBD]
 
 ---
 
 ## 🎯 The Challenge
 ### Project Summary
-The team will design and implement a multimodal pipeline using ColPali and ColQwen2 to categorize business documents and extract key information into structured JSON formats. This project utilizes a public benchmark dataset to compare embedding architectures and evaluate their effectiveness in clustering and classification, directly addressing the bottleneck of manual document handling.
+In this project, you will use a public benchmark of business document images and multimodal embedding models, clustering, classification, and an open-source multimodal LLM to build a pipeline that sorts documents by type and extracts their structured data. This will help our company address the costly, manual work of processing high volumes of unstructured documents.
 
 ### Success Criteria
-Embedding comparison: clear head-to-head of ColPali vs. ColQwen2. Clustering: silhouette, Davies-Bouldin, ARI/NMI metrics. Classification: accuracy, macro-F1, confusion matrix. Extraction: field-level accuracy/F1 and JSON validity.
+
+Success is measured per stage, against the dataset's built-in ground truth
+
+- Embedding comparison: a clear, quantitative head-to-head of ColPali vs. ColQwen2 (vs. OCR-text) on how well each separates document types, with a justified recommendation.   
+- Clustering: cluster-quality metrics (silhouette, Davies–Bouldin) and agreement with true labels (ARI / NMI) across at least three algorithms.   
+- Classification: accuracy, macro-F1, and confusion-matrix analysis on a held-out test set, with a documented baseline and at least one improvement on it.   
+- Extraction: field-level accuracy / F1 and JSON validity of the multimodal LLM's output, measured against the ground-truth structured answers, plus an error analysis.   
+
+A successful December outcome: a working end-to-end pipeline (embed → cluster/classify → flag unknown types → extract structured data), a clear answer to the ColPali-vs-ColQwen2 question backed by metrics, a public, reproducible GitHub repository, and a final presentation
+
+### Stretch Goal
+Agentic IDP router: a tool-calling agent that classifies an incoming document, flags unknown types for human review, routes recognized types to the correct extraction schema, and validates the extracted JSON.
 
 ### Project Milestones
 Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
 
 | Month | Milestone | Key Activities |
-| :--- | :--- | :--- |
-| September | Data Setup, Preprocessing & Text Baseline | • Ingest and inspect the multimodal document dataset (images, OCR text, document layout annotations).<br>• Clean text OCR outputs and standardize document image dimensions.<br>• Implement baseline text-only embeddings (TF-IDF / Sentence-Transformers) for document classification.<br>• Establish evaluation metrics (Accuracy, Macro F1-score, Extraction Precision/Recall). |
-| October | Multimodal Embedding Extraction & Comparison | • Extract visual and layout-aware embeddings using pre-trained vision-language models (e.g., CLIP, LayoutLM, ColPali, or SigLIP).<br>• Train classification heads and entity extraction pipelines on candidate embedding representations.<br>• Conduct comparative benchmarking between text-only, visual, and joint multimodal embeddings across document types. |
-| November / December | Model Evaluation, Interactive UI & Deliverables | • Perform error analysis on challenging document categories (e.g., multi-column layouts, noisy scans, tabular structures).<br>• Build an interactive Streamlit application to upload document images, visualize embedding features, and compare extraction outputs.<br>• Package a clean, reproducible GitHub repository, project documentation, and final presentation deck. |
+|---|---|---|
+| September | Embeddings, the ColPali vs. ColQwen2 comparison, clustering | • Embed every document with ColPali and ColQwen2; cache the vectors.<br>• Build a third embedding channel from OCR text.<br>• Visualize each embedding space with PCA / UMAP / t-SNE.<br>• Compare at least three clustering algorithms against the true type labels (ARI / NMI, silhouette).<br>• Deliver the head-to-head verdict: which embedding best separates document types |
+| October | Classification & the new-type problem | • Train classifiers (logistic regression, k-NN, random forest; optional neural head) to predict document type.<br>• Run model selection; report accuracy, macro-F1, and a confusion-matrix analysis.<br>• Hold out one document type during training to simulate a never-before-seen class.<br>• Build and evaluate a novelty / out-of-distribution detector that flags the unknown type |
+| November | Multimodal LLM extraction & evaluation | • Prompt an open-source multimodal LLM to extract structured JSON using each document's schema.<br>• Score extractions against the ground-truth answers (field-level accuracy / F1, JSON validity).<br>• Run an error analysis of failure modes (low-quality scans, complex tables, hallucinated fields). |
 
-### Stretch Goals
-* **Domain-Specific Fine-Tuning:** Fine-tune a lightweight multimodal encoder on specialized document classes (e.g., financial receipts, medical intake forms) to improve key-value extraction precision.
-* **Interactive Bounding Box Visualizer:** Build an overlay feature in the UI that displays extracted entity fields and bounding boxes directly over the original document images.
-* **Zero-Shot Layout Generalization:** Benchmark zero-shot transfer performance of multimodal embeddings on completely unseen document formats or non-English document layouts.
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
 ---
 
 ## 📊 Dataset
-**Name and Source:** [OCR-Benchmark Dataset](https://huggingface.co/datasets/getomni-ai/ocr-benchmark)  
+**Name and Source:** OCR-Benchmark Dataset
 **Format:** JSON, Images, Text  
 **Size:** 1gb to 5gb  
-**Location:** https://huggingface.co/datasets/getomni-ai/ocr-benchmark  
+**Location:** https://huggingface.co/datasets/getomni-ai/ocr-benchmark 
 
 ### Key Details
-- Publicly available dataset of business document images, text, and categorical data (JSON, image files). 
-- The team must ensure strict handling of outlier document formats and maintain consistency in JSON schema mapping during extraction to avoid parsing errors.
-
+- [Brief description of what's in the data]
+- [Any known limitations or preprocessing needed]
+- [Link to data dictionary or documentation, if available]
+  
 ---
 
 ## 🛠️ Suggested Approach
-**ML Problem Type:** NLP & RAG / Classification  
-**Recommended Libraries:**
-- ColPali, ColQwen2, OCR, PCA, UMAP, t-SNE, logistic regression, k-NN, random forest, multimodal LLM, JSON
-**Evaluation Metrics:** Embedding quality (Silhouette/Davies-Bouldin), Classification accuracy/F1-score, and JSON schema field-level extraction validity.
 
+**ML Problem Type:** Classification, Clustering, NLP, Computer Vision, Deep Learning / Neural Networks, LLMs/ Generative AI, Transfer Learning / Pre-trained Models
+
+**Recommended Libraries:**
+- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
+
+**Evaluation Metrics:**
+- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
+  
 ---
 
 ## 📚 Resources to Get Started
+
 The following resources will help your team understand the problem space and potential technical approaches for this project:
+
 **Background Reading:**
-- Research on multimodal embedding architectures for document retrieval.
+- [e.g., Link to an article or blog post about the problem domain]
+- [e.g., Link to an industry report or case study]
+
 **Technical Tutorials:**
-- Documentation for Hugging Face Transformers and the specific ColPali implementation libraries.
+- [e.g., Link to a free tutorial on the ML technique(s) involved]
+- [e.g., Link to documentation for a key library or tool]
+
 **Code Examples:**
-- Sample multimodal inference notebooks provided via standard Hugging Face/GitHub documentation for vision-language models.
+- [e.g., Link to a relevant GitHub repo]
+- [e.g., Link to a sample implementation or starter code]
+
+**Other:**
+- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
+
+*Feel free to explore beyond these, and share anything interesting you find with me!*
 
 ---
 
 ## 🤝 How We'll Work Together
-**Check-ins:** During our biweekly 60-min AI Studio Lab Section meeting block (2nd and 4th week of every month)  
-**Communication:** Email and scheduled Lab Section syncs.  
-**Response time:** 48 hours for non-urgent technical queries.  
-**Recommended Tools:**
-- **Coding:** Google Colab Free Tier  
-- **Collaboration:** GitHub, Notion  
-- **Virtual Meetings:** Zoom, Google Meet  
+
+**Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
+
+ **Other ways to reach out to me with questions:** 
+* [e.g., Your team's channel within Break Through Tech’s Discord space]
+* [e.g., Email; please copy your teammates and AI Studio Coach]
+* [e.g., Request a team check-in on Zoom]
+* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
+
+> 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
+
+**Recommended free coding / collaboration tools**
+* […]
+* […]
 
 ---
 
 ## 🚀 Getting Started
-1. **Review this overview document** and note any questions for our first meeting.
-2. **Begin reviewing the dataset** using the link provided in the Dataset section.
-3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).
 
-I'm excited to work with you!
+1. **Review this overview document** and note any questions for our first meeting
+2. **Begin reviewing the dataset** using the link above
+3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+
+I’m excited to work with you!
 
 ---
 
 ## ❓ Questions?
-Please bring any questions to our first meeting during the week of August 24th (Break Through Tech's Bridge to Studio - Session B).
+
+Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session C). 
